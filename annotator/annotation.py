@@ -7,27 +7,28 @@ MAPPING = {
     'created': {'type': 'date'},
     'updated': {'type': 'date'},
     'quote': {'type': 'string', 'analyzer': 'standard'},
-    'tags': {'type': 'string', 'index_name': 'tag'},
+    'tag': {'type': 'string'},
+    'tags': {'type': 'string', 'copy_to': 'tag'},
     'text': {'type': 'string', 'analyzer': 'standard'},
     'uri': {'type': 'string'},
     'user': {'type': 'string'},
     'consumer': {'type': 'string'},
+    'range': {'type': 'string'},
     'ranges': {
-        'index_name': 'range',
         'properties': {
-            'start': {'type': 'string'},
-            'end': {'type': 'string'},
-            'startOffset': {'type': 'integer'},
-            'endOffset': {'type': 'integer'},
+            'start': {'type': 'string', 'copy_to': 'range'},
+            'end': {'type': 'string', 'copy_to': 'range'},
+            'startOffset': {'type': 'integer', 'copy_to': 'range'},
+            'endOffset': {'type': 'integer', 'copy_to': 'range'},
         }
     },
+    'permission': {'type': 'string'},
     'permissions': {
-        'index_name': 'permission',
         'properties': {
-            'read': {'type': 'string'},
-            'update': {'type': 'string'},
-            'delete': {'type': 'string'},
-            'admin': {'type': 'string'}
+            'read': {'type': 'string', 'copy_to': 'permission'},
+            'update': {'type': 'string', 'copy_to': 'permission'},
+            'delete': {'type': 'string', 'copy_to': 'permission'},
+            'admin': {'type': 'string', 'copy_to': 'permission'}
         }
     },
     'document': {

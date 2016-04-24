@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 requires = [
-    'elasticsearch>=1.0,<2',
+    'elasticsearch>=2.0.0,<3.0.0',
     'PyJWT>=0.1.4',
     'iso8601>=0.1.4',
     'six',

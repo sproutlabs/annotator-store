@@ -89,7 +89,7 @@ class _Model(dict):
     def create_all(cls):
         log.info("Creating index '%s'.", cls.es.index)
         conn = cls.es.conn
-        conn.indices.create(cls.es.index, ignore=400)
+        conn.indices.create(cls.es.index, ignore=400, body={'settings': {'analyzer': 'keyword'}})
         mapping = cls.get_mapping()
         conn.indices.put_mapping(index=cls.es.index,
                                  doc_type=cls.__type__,
@@ -99,13 +99,6 @@ class _Model(dict):
     def get_mapping(cls):
         return {
             cls.__type__: {
-                '_id': {
-                    'path': 'id',
-                },
-                '_source': {
-                    'excludes': ['id'],
-                },
-                'analyzer': 'keyword',
                 'properties': cls.__mapping__,
             }
         }
