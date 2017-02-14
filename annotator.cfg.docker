@@ -1,0 +1,9 @@
+from os import environ
+
+SECRET_KEY = environ['SECRET_KEY']
+
+ELASTICSEARCH_HOST = environ['ES_HOST']
+ELASTICSEARCH_INDEX = 'annotator'
+
+AUTH_ON = environ['AUTH']
+AUTHZ_ON = False

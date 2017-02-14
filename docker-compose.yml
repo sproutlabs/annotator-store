@@ -1,0 +1,15 @@
+version: '2'
+services:
+    elasticsearch:
+        image: elasticsearch:2-alpine
+    annotator-store:
+        build: .
+        restart: unless-stopped
+        ports:
+            - 80:80
+        depends_on:
+            - elasticsearch
+        environment:
+            SECRET_KEY: CHANGEME
+            ES_HOST: http://elasticsearch
+            AUTH: 'True'

@@ -15,19 +15,13 @@ The functionality can roughly be separated in two parts:
 Getting going
 -------------
 
-You'll need a recent version of `Python <http://python.org>`__ (Python 2 >=2.6
-or Python 3 >=3.3) and `ElasticSearch <http://elasticsearch.org>`__ (>=1.0.0)
-installed.
+For docker the simplest method is  `docker-compose up` which will give you annotator and elasticsearch
 
-The quickest way to get going requires the ``pip`` and ``virtualenv``
-tools (``easy_install virtualenv`` will get them both). Run the
-following in the repository root::
+There are a number of required env variables as bellow
+    - `SECRET_KEY` - The secret key that will be used for authentication
+    - `ES_HOST` - The address to access your Elasticsearch server on
+    - `AUTH` - Whether to enable authentication, possible values are `True` or `False`
 
-    virtualenv pyenv
-    source pyenv/bin/activate
-    pip install -e .[flask]
-    cp annotator.cfg.example annotator.cfg
-    python run.py
 
 You should see something like::
 
